@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY test-script.sh /usr/local/bin/test-script.sh
-RUN chmod +x /usr/local/bin/test-script.sh
+    COPY test-script.sh /usr/local/bin/test-script.sh
 
-ENTRYPOINT ["/usr/local/bin/test-script.sh"]
+RUN chmod +x /usr/local/bin/test-script.sh && sh /usr/local/bin/test-script.sh
+
+ENTRYPOINT ["/bin/bash"]
